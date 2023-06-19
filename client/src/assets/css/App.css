@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Montserrat-Regular.ttf) format("tff");
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Raleway-VariableFont_wght.ttf) format("tff");
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat";
+}
+
+/* Navbar */
+.bag-dark,
+.bag-dark .dropdown-menu,
+.bag-dark .dropdown-item,
+.bag-dark .list-group-item {
+  background-color: #161616;
+  color: #ffffff;
+}
+
+.nav-pills .nav-link,
+.nav-link {
+  color: #729ff3;
+}
+
+.nav-pills .nav-link:hover,
+.nav-link:hover {
+  color: #1215a0;
+  border: 0;
+}
+
+.nav-pills .nav-link.active,
+.list-group-item.active,
+.bg-color {
+  background: #4287f5;
+  color: #FFFFFF;
+}
+
+.bg-light-colorless,
+.btn.btn-light {
+  background-color: #eeeeee;
+}
+
+.bg-dark-colorless,
+.btn.btn-dark {
+  background-color: #202020 !important;
+  border: 0;
+}
+
+.bag-light input,
+.bag-light textarea,
+.bag-light .nav-link.active {
+  border: 0
+}
+
+.bag-dark input,
+.bag-dark textarea,
+.bag-dark .nav-link.active {
+  background-color: #202020 !important;
+  color: #ffffff !important;
+  border: 0;
+}
+
+.bag-light input:focus,
+.bag-light textarea:focus,
+.btn.btn-primary:focus {
+  border-color: #1215a0 !important;
+  box-shadow: 0 0 0 0.2rem #02053a40 !important;
+}
+
+.bag-dark input:focus,
+.bag-dark textarea:focus {
+  border-color: #1215a0 !important;
+  box-shadow: 0 0 0 0.2rem #02053a40 !important;
+  background-color: #161616 !important;
+}
+
+.bag-dark .btn.btn-primary,
+.bag-light .btn.btn-primary {
+    background: #4287f5;
+    color: #FFFFFF;
+    border: 0;
+}
+
+.modal-content {
+  border: 0 !important;
+}
+
+.container {
+    border-radius: 10px;
+
+}
+
+.justify-content-end{
+    width: 100%;
+}
+
+.logoDark{
+    margin-left: 20px;
+}
+
+.nav {
+    width: 100% !important;
+}
+
+.nav-item {
+    width: 100% !important;
+}
+
+.nav-link{
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.nav-link:hover{
+    border: 1px solid black !important;
+}
+
+.input-group>.form-control{
+    border: 1px solid grey !important;
+}
+
+.form-control{
+    border: 1px solid grey !important; 
+}
+
+.list-group-flush>.list-group-item{
+    background: #b5cef5;
+}
