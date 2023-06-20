@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Alert, Button, Container, Form, Tabs, Tab } from 'react-bootstrap'
 import { v4 as uuidV4 } from 'uuid'
 import axios from 'axios'
@@ -18,6 +18,11 @@ export default function Login({ setLoginId, setUserName }) {
     const [type, setType] = useState("")
     const [message, setMessage] = useState("")
     const [show, setShow] = useState(false)
+    const [language, setLanguage] = useState('en')
+
+    useEffect(() => {
+        setLanguage(localStorage.getItem('lang'));
+      }, []);
 
     function handleLoginSubmit(e) {
         e.preventDefault()
@@ -74,10 +79,10 @@ export default function Login({ setLoginId, setUserName }) {
             <Container style={{maxWidth: '300px', padding: '10px', boxShadow: " 0px 0px 35px 0px rgba(0,0,0,0.75)" }}>
                 {show ? <Alert variant={type} onClose={() => setShow(false)} dismissible>{message}</Alert> : null}
                 <Tabs variant="pills" defaultActiveKey="login" style={{ marginBottom: '20px' }}>
-                    <Tab eventKey="login" title="Login">
+                    <Tab eventKey="login" title={language === 'ua' ? "Вхід": "Login"}>
                         <Form onSubmit={handleLoginSubmit} className="w-100">
                             <Form.Group>
-                                <Form.Label>Email</Form.Label>
+                                <Form.Label>{language === 'ua' ? 'Електронна Пошта' : 'Email'}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="Ex: nikita@gmail.com"
@@ -88,7 +93,7 @@ export default function Login({ setLoginId, setUserName }) {
                             </Form.Group>
 
                             <Form.Group>
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>{language === 'ua' ? 'Пароль' : 'Password'}</Form.Label>
                                 <Form.Control
                                     type="password"
                                     placeholder="************"
@@ -100,15 +105,15 @@ export default function Login({ setLoginId, setUserName }) {
                             
                             <Form.Group className="mt-2 mb-0 text-right">
                                 <Button variant="primary" type="submit">
-                                    Login
+                                {language === 'ua' ? 'Вхід' : 'Login'}
                                 </Button>
                             </Form.Group>
                         </Form>
                     </Tab>
-                    <Tab eventKey="register" title="Register">
+                    <Tab eventKey="register" title={language === 'ua' ? "Реєстрація": "Register"}>
                         <Form className="w-100">
                             <Form.Group>
-                                <Form.Label>Full Name</Form.Label>
+                                <Form.Label>{language === 'ua' ? 'Повне І\'мя' : 'Full Name'}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="Ex: Nikita Malik"
@@ -118,7 +123,7 @@ export default function Login({ setLoginId, setUserName }) {
                             </Form.Group>
 
                             <Form.Group>
-                                <Form.Label>Email</Form.Label>
+                                <Form.Label>{language === 'ua' ? 'Електронна Пошта' : 'Email'}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="Ex: nikita@gmail.com"
@@ -129,7 +134,7 @@ export default function Login({ setLoginId, setUserName }) {
                             </Form.Group>
 
                             <Form.Group>
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>{language === 'ua' ? 'Пароль' : 'Password'}</Form.Label>
                                 <Form.Control
                                     type="password"
                                     placeholder="************"
@@ -141,7 +146,7 @@ export default function Login({ setLoginId, setUserName }) {
                             
                             <Form.Group className="mt-2 mb-0 text-right">
                                 <Button variant="primary" onClick={handleRegisterSubmit}>
-                                    Register
+                                {language === 'ua' ? 'Реєстрація' : 'Register'}
                                 </Button>
                             </Form.Group>
                         </Form>

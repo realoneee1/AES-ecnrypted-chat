@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Modal, Form, Button } from 'react-bootstrap'
 import { useContacts } from '../contexts/ContactsProvider'
 
@@ -9,7 +9,11 @@ export default function NewContactModal({ closeModal }) {
     const idRef = useRef()
     const nameRef = useRef()
     const { createContact } = useContacts()
+    const [language, setLanguage] = useState('en')
 
+    useEffect(() => {
+        setLanguage(localStorage.getItem('lang'));
+      }, []);
     function handleSubmit(e) {
         e.preventDefault()
 
@@ -20,7 +24,7 @@ export default function NewContactModal({ closeModal }) {
     
     return (
         <>
-            <Modal.Header className={isLightTheme ? "bag-light" : "bag-dark"} closeButton>Create Contact</Modal.Header>
+            <Modal.Header className={isLightTheme ? "bag-light" : "bag-dark"} closeButton>{language === 'ua' ? 'Створити контакт' : 'Create Contact'}</Modal.Header>
             <Modal.Body className={isLightTheme ? "bag-light" : "bag-dark"}>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group>
@@ -28,10 +32,10 @@ export default function NewContactModal({ closeModal }) {
                         <Form.Control type="text" ref={idRef} required />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>{language === 'ua' ? 'І\'мя' : 'Name'}</Form.Label>
                         <Form.Control type="text" ref={nameRef} required />
                     </Form.Group>
-                    <Button type="submit">Create</Button>
+                    <Button type="submit">{language === 'ua' ? 'Створити' : 'Create'}</Button>
                 </Form>
             </Modal.Body>
         </>

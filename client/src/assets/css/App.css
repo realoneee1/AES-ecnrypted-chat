@@ -147,3 +147,7 @@ h6 {
 .list-group-flush>.list-group-item{
     background: #b5cef5;
 }
+
+select {
+  margin-left: 15px !important;
+}

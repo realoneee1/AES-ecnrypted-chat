@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Form, Button } from 'react-bootstrap'
 import { useTheme } from '../contexts/ThemeProvider'
 import { useContacts } from '../contexts/ContactsProvider'
@@ -9,7 +9,11 @@ export default function NewConversationModal({ closeModal }) {
     const [selectedContactIds, setSelectedContactIds] = useState([])
     const { contacts } = useContacts()
     const { createConversation } = useConversations()
+    const [language, setLanguage] = useState('en')
 
+    useEffect(() => {
+        setLanguage(localStorage.getItem('lang'));
+      }, []);
     
     function handleSubmit(e) {
         e.preventDefault()
@@ -32,7 +36,7 @@ export default function NewConversationModal({ closeModal }) {
 
     return (
         <>
-            <Modal.Header className={isLightTheme ? "bag-light" : "bag-dark"} closeButton>Create Conversation</Modal.Header>
+            <Modal.Header className={isLightTheme ? "bag-light" : "bag-dark"} closeButton>{language === 'ua' ? 'Створити діалог' : 'Create Conversation'}</Modal.Header>
             <Modal.Body className={isLightTheme ? "bag-light" : "bag-dark"}>
                 <Form onSubmit={handleSubmit}>
                     {contacts.map(contact => (
@@ -45,7 +49,7 @@ export default function NewConversationModal({ closeModal }) {
                             />
                         </Form.Group>
                     ))}
-                    <Button type="submit">Create</Button>
+                    <Button type="submit">{language === 'ua' ? 'Створити' : 'Create'}</Button>
                 </Form>
             </Modal.Body>
         </>
